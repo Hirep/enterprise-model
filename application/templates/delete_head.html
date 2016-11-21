@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Department Head - Delete{% endblock %} 
+{% block page_content %}
+
+{% from "_formhelpers.html" import render_field %}
+<div class="alert alert-danger">
+  You are going to delete head of <strong>{{ department }}</strong>
+   <br> Select new head:
+</div>
+<form method=post action="/employees/delete/{{ id }}">
+  <dl>
+    {{ render_field(form.head_id) }}
+  </dl>
+  <p><input class="btn btn-danger btn-md" type=submit value=Proceed>
+</form>
+
+{% endblock %}

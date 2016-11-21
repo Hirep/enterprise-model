@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Department - Add{% endblock %} 
+{% block page_content %}
+
+{% from "_formhelpers.html" import render_field %}
+{% if id %}
+<form method=post action="/departments/edit/{{ id }}">
+{% else %}
+<form method=post action="/departments/add">
+{% endif %}
+  <dl>
+    {{ render_field(form.department_name) }}
+    {{ render_field(form.parental_department_id) }}
+    {{ render_field(form.head_id) }}
+    {{ render_field(form.about) }}
+    
+  </dl>
+  <p><input class="btn btn-success btn-md" type=submit value=Register>
+</form>
+
+{% endblock %}

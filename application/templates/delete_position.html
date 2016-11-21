@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Position - Delete{% endblock %} 
+{% block page_content %}
+
+{% from "_formhelpers.html" import render_field %}
+<div class="alert alert-danger">
+  You are going to delete position <strong>{{ position }}</strong>
+   <br> Select new position for employees:
+</div>
+<form method=post action="/positions/delete/{{ id }}">
+  <dl>
+    {{ render_field(form.position_id) }}
+  </dl>
+  <p><input class="btn btn-danger btn-md" type=submit value=Proceed>
+</form>
+
+{% endblock %}

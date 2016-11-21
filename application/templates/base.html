@@ -1,0 +1,32 @@
+{% extends "bootstrap/base.html" %} 
+{% block title %}Enterprise Model{% endblock %} {% block navbar %}
+{% block head_includes %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <script src="../static/script.js"></script>
+
+{% endblock %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url_for('employees') }}">Employees</a></li>
+                <li><a href="{{ url_for('positions') }}">Positions</a></li>
+                <li><a href="{{ url_for('departments') }}">Departments</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+<div class="container">{% block page_content %}{% endblock %}</div>
+{% endblock %}
