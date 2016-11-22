@@ -1,5 +1,5 @@
 from application import db
-from application.models import User, Position, Department
+from application.models import Position, Department
 import datetime
 
 db.create_all()
