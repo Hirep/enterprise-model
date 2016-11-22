@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Position - Add{% endblock %} 
+{% block page_content %}
+
+{% from "_formhelpers.html" import render_field %}
+{% if id %}
+<form method=post action="/positions/edit/{{ id }}">
+{% else %}
+<form method=post action="/positions/add">
+{% endif %}
+  <dl>
+    {{ render_field(form.position_name) }}
+    {{ render_field(form.about) }}
+  </dl>
+  <p><input class="btn btn-success btn-md" type=submit value=Register>
+</form>
+
+{% endblock %}

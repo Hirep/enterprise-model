@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Employee - Add{% endblock %} 
+{% block page_content %}
+
+{% from "_formhelpers.html" import render_field %}
+{% if id %}
+<form method=post action="/employees/edit/{{ id }}">
+{% else %}
+<form method=post action="/employees/add">
+{% endif %}
+  <dl>
+    {{ render_field(form.name_first) }}
+    {{ render_field(form.name_second) }}
+    {{ render_field(form.department_id) }}
+    {{ render_field(form.position_id) }}
+    {{ render_field(form.email) }}    
+    {{ render_field(form.tel, pattern="\+\d{12}") }}
+    {{ render_field(form.birth_date) }}
+    
+  </dl>
+  <p><input class="btn btn-success btn-md" type=submit value=Register>
+</form>
+
+{% endblock %}
