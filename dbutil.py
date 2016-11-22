@@ -27,7 +27,6 @@ import datetime
 #                     about='-')
 # db.session.add(dpt3)
 
-
 usr1 = User(name_first='Rufus',
                 name_second='Sixsmith',
                 department_id=1,

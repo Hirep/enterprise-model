@@ -73,9 +73,6 @@ def add_employee():
     form = forms.AddUser(request.form)
     form.department_id.choices = [(dpt.id, dpt.department_name) for dpt in departments]
     form.position_id.choices = [(psn.id, psn.position_name) for psn in positions]
-
-    
-
     if request.method == "POST":
         if form.validate():
             user = models.User( name_first=form.name_first.data,
@@ -287,7 +284,6 @@ def emloyee_delete(id):
                 # send new head to rule department
                 usr = db.session.query(models.User).get(form.head_id.data)
                 usr.department_id = department.id
-
                 db.session.commit()
             except (Exc.IntegrityError, Exc.OperationalError) as err:
                 db.session.rollback()
@@ -306,7 +302,6 @@ def emloyee_delete(id):
         except (Exc.IntegrityError, Exc.OperationalError) as err:
             db.session.rollback()
             return render_template('creation_failure.html', error=err)
-
 
 @app.route('/positions/delete/<id>', methods=["GET", "POST"])
 def position_delete(id):
@@ -341,7 +336,6 @@ def position_delete(id):
                 db.session.rollback()
                 return render_template('creation_failure.html', error=err)
 
-    
     form = forms.AddUser(request.form)
     form.position_id.choices = positions
     return render_template("delete_position.html", form=form, position=position.position_name, id=id)
@@ -358,7 +352,6 @@ def department_delete(id):
     
     if not department:
         return render_template('404.html'), 404
-    
     
     if department.parental_department_id:
         try:
@@ -381,7 +374,6 @@ def department_delete(id):
             # make 'unemployed' users whose parentless department was deleted 
             for usr in db.session.query(models.User).filter_by(department_id=id):
                 usr.department_id = None
-
             db.session.delete(department)
             db.session.commit()
             return render_template('creation_success.html')
